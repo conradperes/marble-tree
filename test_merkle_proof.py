@@ -6,8 +6,8 @@ from node import Node
 class TestMerkleProof(unittest.TestCase):
 
     def test_one_proof(self):
-        """Test that the proof can handle a tree with only one transaction.
-        No other data is necessary to arrive at the block header
+        """Teste que a prova de merkle consegue lidar com árvores de apenas uma transação
+        Não é necessário nenhum outro dado para chegar a block header
         """
         tx1 = 'a'
 
@@ -16,7 +16,7 @@ class TestMerkleProof(unittest.TestCase):
         self.assertEqual([], merkle_proof(tx1, merkle_tree))
 
     def test_small_proof(self):
-        """Test that the proof can handle a tree with only two transactions"""
+        """Teste que a prova de merkle consegue lidar com árvores 2 transações"""
         tx1 = 'a'
         tx2 = 'b'
 
@@ -26,8 +26,7 @@ class TestMerkleProof(unittest.TestCase):
         self.assertEqual([Node('l', tx1)], merkle_proof(tx2, merkle_tree))
 
     def test_medium_proof(self):
-        """Test that the proof can handle a tree with up to four
-        transactions
+        """Teste que a prova consegue lidar com árvores de mais de 4 transações
         """
         tx1 = 'a'
         tx2 = 'b'
@@ -49,7 +48,7 @@ class TestMerkleProof(unittest.TestCase):
         self.assertEqual([Node('r', data), Node('r', tx2)], merkle_proof(tx1, merkle_tree))
 
     def test_large_proof(self):
-        """Test that the proof can handle a tree with up to eight
+        """Teste que a prova consegue lidar com árvores de mais de 8 transações
         transaction"""
         tx1 = 'a'
         tx2 = 'b'
@@ -73,8 +72,7 @@ class TestMerkleProof(unittest.TestCase):
         self.assertEqual([Node('r', data4), Node('l', data1), Node('r', tx4)], merkle_proof(tx3, merkle_tree))
 
     def test_extra_large_proof(self):
-        """Test that the proof can handle a tree with up to eight
-        transaction"""
+        """Teste que a prova consegue lidar com árvores de mais de 8 transações"""
         tx1 = 'a'
         tx2 = 'b'
         tx3 = 'c'
@@ -108,9 +106,7 @@ class TestMerkleProof(unittest.TestCase):
         self.assertEqual([Node('l', data5), Node('r', data8), Node('r', data9), Node('r', tx10)], merkle_proof(tx9, merkle_tree))
 
     def test_verify_proof_small(self):
-        """Test that the proof can be verified; the hash must be reconstructed
-        exactly right. Issues may come up with the order in which data is
-        hashed
+        """Teste de verificação do prova merkle
         """
         tx1 = 'a'
         tx2 = 'b'
@@ -124,9 +120,9 @@ class TestMerkleProof(unittest.TestCase):
         self.assertEqual(verified_hash, merkle_tree.block_header)
 
     def test_verify_proof_big(self):
-        """Test that the proof can be verified; the hash must be reconstructed
-        exactly right. Issues may come up with the order in which data is
-        hashed
+        """Testa que a prova pode ser verificada; Deve ser reconstruída 
+        exatamente direita. Problemas como ordem do texto podem diferir do 
+        hash do header devido as concatenações
         """
         tx1 = 'a'
         tx2 = 'b'
