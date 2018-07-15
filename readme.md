@@ -1,15 +1,15 @@
-# Merkle Proof and Verification
+# Prova Merkle e Verificação
 
 ## Introdução
 
-Merkle trees are hash-based data structures used to prove the integrity of transaction data stored in the block. **For this exercise you may assume that all trees are binary, balanced, and that the number of transactions to be stored are some exponent of two.**
+Árvore Merkle é uma estrutura de dados baseada em hash usada para provar a integridade de uma transação de dados armazenadados em blovo. **Para esse algoritmo assuma que as árvores são binárias, balanceadas, e que o número de transações serão armazenadas são algum exponde de dois.**
 
 ![Merkle Tree](img/merkle_tree.jpeg "Merkle Tree")
 _Source: [Grid+](https://blog.gridplus.io/efficiently-bridging-evm-blockchains-8421504e9ced)_
 
-Above you can see what this tree would look like. The eight transactions in the block (A-H) are lined up in the bottom row. The second row contains four hashes (S(X) = sha3 hash) of the child transactions. The third row contains hashes of the child hashes, and the root contains a hash of the hashes of the hashes of the transactions. Generically, this is how the transaction part of an Ethereum block is laid out and the root here is what we know of as a transaction header (one of the 15 pieces of information that goes into the block header).
+Acima você poderá ver como a árvore se parece. As oito transações no bloco (A-H) estão alinhadas no campo transactions. O segundo campo contém 4 hashes (S(X) = sha3 hash) de transações filhas. O terceiro campo contém hashes de hashes filhos, e a raiz contém um hash de hashes de hashes das transações. Genericamente, isso é como parte da transação de bloco de Ethereum concentrado na raiz aonde nós conhecemos como transação header (uma das 15 peças de informação que vai no bloco header).
 
-## The Problem
+## O Problema
 
 The reason we use Merkle trees to store block data (i.e. transactions) is that verification is very efficient. This verification is called a Merkle proof.
 
