@@ -18,9 +18,8 @@ class MerkleTree(object):
         self._block_header = self._root.data
 
     def add_tx(self, *tx):
-        """Add an arbitrary amount of tx's to the tree. It needs to be
-        reconstructed every time this happens and the block header
-        changes as well
+        """Adiciona um quantidade de textos na árvore. 
+        Precisa ser reconstruído toda vez que acontece uma mudança no block header
         """
         tx_in = list(tx)
         if type(tx_in[0]) == list:
@@ -29,14 +28,14 @@ class MerkleTree(object):
         self._reevaluate()
 
     def reset_tree(self, hash_function='sha256'):
-        """Clear the tree data"""
+        """Limpa dados da árvore"""
         self._hash_function = hash_function
         self._nodes = []
         self._height = 0
         self._block_header = None
 
     def _evaluate(self):
-        """Used to construct the tree and arrive at the block header"""
+        """Usado para construir a árvore e chegar ao bloco header"""
         leaves = list(self._leaves)
         if not is_power_of_two(len(leaves)) or len(leaves) < 2:
             last_tx = leaves[-1]
@@ -66,7 +65,7 @@ class MerkleTree(object):
 
     @property
     def hash_function(self):
-        """func: Allow the user to query the tree's hash function"""
+        """func: Permite ao usuário consultar a função hash da árvore"""
         return self._hash_function
 
     # @hash_function.setter
