@@ -5,8 +5,8 @@ from hash_data_structures import *
 class TestHashDataStructures(unittest.TestCase):
 
     def test_incompatible_hash_functions(self):
-        """Ensure that the hash function used across the tree
-        is the same
+        """Assegura que a função hash usada ao longo da
+        árvore é a mesma
         """
         tx1 = 'a'
         tx2 = 'b'
