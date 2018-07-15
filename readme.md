@@ -2,7 +2,7 @@
 
 ## Introdução
 
-Árvore Merkle é uma estrutura de dados baseada em hash usada para provar a integridade de uma transação de dados armazenadados em blovo. **Para esse algoritmo assuma que as árvores são binárias, balanceadas, e que o número de transações serão armazenadas são algum exponde de dois.**
+Árvore Merkle é uma estrutura de dados baseada em hash usada para provar a integridade de uma transação de dados armazenadados em blovo. **Para esse algoritmo assuma que as árvores são binárias, balanceadas, e que o número de transações serão armazenadas são algum expoente de dois.**
 
 ![Merkle Tree](img/merkle_tree.jpeg "Merkle Tree")
 _Source: [Grid+](https://blog.gridplus.io/efficiently-bridging-evm-blockchains-8421504e9ced)_
@@ -11,38 +11,38 @@ Acima você poderá ver como a árvore se parece. As oito transações no bloco 
 
 ## O Problema
 
-The reason we use Merkle trees to store block data (i.e. transactions) is that verification is very efficient. This verification is called a Merkle proof.
+A razão de nós usarmos a árvore de Merkle para armazenar blocos de dados (i.e. transações) é que a verificação é muito eficiente. Essa verificação é chamada de prova de Merkle.
 
-Suppose we want to prove that transaction C was indeed in the block that formed the header shown above.
+Suponha que nós provamos que a transação C foi de fato no bloco formado pelo header mostrado acima.
 
 ![Merkle Proof](img/merkle_proof.jpeg "Merkle Proof")
 _Source: [Grid+](https://blog.gridplus.io/efficiently-bridging-evm-blockchains-8421504e9ced)_
 
-In addition to the transaction hash C , we also need D, S(A,B), and S(S(E,F),S(G,H)) to form the proof. The verification itself performs the following steps on the proof:
+Em adição a transação hash C , nós também precisamos de  D, S(A,B), e S(S(E,F),S(G,H)) para formar a prova. A verificação em si performa nos seguintes passos da forma:
 
-* Hash C and D to produce S(C,D).
-* Hash S(A,B) and S(C,D) to produce S(S(A,B),S(C,D)).
-* Hash S(S(A,B),S(C,D)) and S(S(E,F),S(G,H)) to produce the root.
-* Check that the root is the same as what has been stored previously.
+* Hash C e D produzem S(C,D).
+* Hash S(A,B) e S(C,D) produzem S(S(A,B),S(C,D)).
+* Hash S(S(A,B),S(C,D)) e S(S(E,F),S(G,H)) produzem a raiz.
+* Cheque que a raiz é o mesmo que foi armazenado previamente.
 
-The efficiency here is that we proved a transaction belonged in a block with only 3 accompanying pieces of information (instead of the 7 other transactions that were stored in the block). This efficiency becomes exponentially more pronounced with larger trees.
+A eficiência aqui é que foi provado que a transação pertence a um bloco com 3 pedaços acomponhados de informação (ao invés de 7 outras transações que foram armazenadas no bloco). Essa eficiência se torna exponencialmente mais pronunciada em árvores grandes.
 
-It will be your job to implement the Merkle proof functionality and to verify it.
+O trabalho implementa a funcionalidade da prova de Merkle sua verificação.
 
-### A Note on Project Layout
+### Explicação das funções e layout do projeto
 
-You need only to make changes to `merkle_proof.py`, please make sure to familiarize yourselves with the layout of the entire directory however. The roles of the other files are as follows:
 
-* `hash_data_structures.py`: contains intermediary object classes that act as nodes in the tree.
-* `merkle_tree.py`: contains the Merkle Tree implementation; make sure you familiarize yourself with how it works. It takes in a list of transactions as inputs. Transactions are generally in the form of strings in this case, for brevity.
-* `test.py`: a script to help run all the other tests.
-* `test_*.py`: testing scripts built on the `unittest` module. Each test ensures the integrity of their respective file.
-* `test_sanity.py`: tests that highlight the basic use of each data structure. Take a look at this file if you find yourself lost on how they are implemented.
-* `utils.py`: contains multiple helpful methods.
+* `hash_data_structures.py`: contém classe com objeto intermediário que atua como nó na árvore.
+* `merkle_tree.py`: contém implementação da árvore de Merkle; Pega uma lista de transações como inputs. Transações são geralmente em forma de strings nesse caso.
+* `test_sanity.py`: testa o foco do uso básico para cada estrutura de dados
+ `utils.py`: contém múltiplos métodos úteis ao desenvolvimento.
+* `test.py`: script para ajudar a rodar outros testes.
+* `test_*.py`: Testando roteiros construídos no módulo de unittest. Cada teste assegura a integridade do arquivo respectivo.
 
-## Running Tests
 
-Use `python3 test.py` to run all the tests. You may add your own tests and run them with `python [filename].py`. Make sure to format tests according to the `unittest` module (take a look at the other files to see examples).
+## Rodando Testes
 
-Writing your own tests is not required but highly recommended. All that matters is you pass our internal test cases.
+Use `python3 test.py` roda todos os testes. Você pode adicionar os seus próprios testes e rodar dessa forma `python [filename].py`. Tenha certeza que o teste roda de acordo com o  `unittest` módulo .
+
+
 

@@ -1,7 +1,10 @@
 import unittest
 from merkle_tree import *
-
-
+import time
+import pandas as pd
+from matplotlib import pyplot as plt
+import random
+import string
 class TestMerkleTree(unittest.TestCase):
 
     def test_one_tx(self):
@@ -133,5 +136,57 @@ class TestMerkleTree(unittest.TestCase):
 
         self.assertEqual(merkle_tree.block_header, data)
 
+    def test_plotarGraficoMerkleTree(self):
+        A = [0]
+        for i in range(4):
+            inicio = time.time()
+            teste = TestMerkleTree()
+            teste.test_add_tx()
+            fim = time.time()
+            print('Tempo de execução:', fim - inicio)
+            duracao = fim - inicio
+            A.append(duracao )
+        plt.plot([1,2,3, 4, 5], A)
+        plt.title('--Merkle Tree -- Complexidade Assintótica')
+        plt.xlabel("Nodes")
+        plt.ylabel("milisegundos executados")
+        plt.legend(["Milisegundos", "Nodes"])
+        plt.show()
+
+    def test_Plot_500NodesMerkleTree(self):
+        A = [0]
+        B = []
+        tree = MerkleTree(['a','b'])
+        for i in range(500):
+            inicio = time.time()
+            tree.add_tx('z')
+            fim = time.time()
+            print('Tempo de execução:', fim - inicio)
+            duracao = fim - inicio
+            if(i<499):
+                A.append(duracao)
+                B.append(i)
+
+        plt.plot(B[1:499], A[1:499])
+        plt.title('--Merkle Tree -- Complexidade Assintótica')
+        plt.xlabel("Nodes")
+        plt.ylabel("milisegundos executados")
+        plt.legend(["Milisegundos", "Nodes"])
+        plt.show()
+
+
+def generate_key_string():
+    tokens = string.ascii_uppercase + string.digits #quais caracteres aceitos
+    segmentos_char = 5 #numero de caracteres por segmento
+    segmentos = 4 #numero de segmentos
+    key_string = '' #chave a ser gerada
+    for x in range(segmentos):
+        key_string += ''.join(random.choice(tokens) 
+    for y in range(segmentos_char))
+    if x < segmentos-1: 
+        key_string += '-' 
+        return key_string
+
+
 if __name__ == '__main__':
-    unittest.main()
+     unittest.main()
