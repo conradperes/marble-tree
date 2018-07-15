@@ -1,7 +1,9 @@
 from utils import *
 import math
 from node import Node
+from merkle_tree import *
 
+SECURE_HASH_FUNCTIONS = ['sha1', 'sha224', 'sha256', 'sha384', 'sha512']
 
 def merkle_proof(tx, merkle_tree):
     """Given a tx and a Merkle tree object, retrieve its list of tx's and
@@ -12,6 +14,9 @@ def merkle_proof(tx, merkle_tree):
     Return this data as a list; remember that order matters!
     """
     #### YOUR CODE HERE
+    return merkle_tree._leaves
+    
+
 
 
 
@@ -21,6 +26,12 @@ def verify_proof(tx, merkle_proof):
     along with every other piece of data in the proof in the correct order
     """
     #### YOUR CODE HERE
+    #letra = ''
+    merkle_tree = MerkleTree(merkle_proof)
+    #for letras in merkle_proof:
+    #    letra = letra + letras
+    print('merkle_tree.block_header:',merkle_tree.block_header)
+    return merkle_tree.block_header
 
 
     

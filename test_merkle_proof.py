@@ -3,7 +3,6 @@ from merkle_proof import *
 from merkle_tree import *
 from node import Node
 
-
 class TestMerkleProof(unittest.TestCase):
 
     def test_one_proof(self):
@@ -149,7 +148,8 @@ class TestMerkleProof(unittest.TestCase):
         merkle_tree = MerkleTree([tx1, tx2, tx3, tx4, tx5, tx6, tx7, tx8, tx9, tx10, tx11, tx12, tx13, tx14, tx15, tx16])
         proof = merkle_proof(tx2, merkle_tree)
         verified_hash = verify_proof(tx2, proof)
-
+        print(verified_hash)
+        print(merkle_tree.block_header)
         self.assertEqual(verified_hash, merkle_tree.block_header)
 
 if __name__ == '__main__':
