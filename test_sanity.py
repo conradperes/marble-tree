@@ -5,7 +5,7 @@ from merkle_tree import *
 class SanityCheck(unittest.TestCase):
 
     def test_sanity_HashLeaf(self):
-        """Ensure HashLeaf structures work as intended"""
+        """Assegura que a estrutura HashLeaf trabalha como foi projetada"""
         tx1 = 'a'
         tx2 = 'b'
 
@@ -18,7 +18,7 @@ class SanityCheck(unittest.TestCase):
         self.assertEqual(hash_leaf.height, 1)
 
     def test_sanity_HashNode(self):
-        """Ensure HashNode structures work as intended"""
+        """Assegura que a estrutura HashLeaf trabalha como foi projetada"""
         tx1 = 'a'
         tx2 = 'b'
         tx3 = 'c'
@@ -39,11 +39,11 @@ class SanityCheck(unittest.TestCase):
         self.assertEqual(hash_node.height, 2)
 
     def test_sanity_check_MerkleTree(self):
-        """Ensure MerkleTree structures work as intended"""
-        tx1 = 'a'
-        tx2 = 'b'
+        """Assegura que a estrutura HashLeaf trabalha como foi projetada"""
+        tx1 = 'z'
+        tx2 = 'x'
         tx3 = 'c'
-        tx4 = 'd'
+        tx4 = 'e'
 
         data1 = tx1 + tx2
         data1 = hash_data(data1, 'sha256')
