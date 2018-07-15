@@ -1,20 +1,20 @@
 
 class Node:
-	"""Node wrapper class implementation. 
-	Useful for tracking depth of a node when
-	constructing the merkle proof"""
+	"""Classe de implementação de nó empacotado ou wrapper. 
+	Útil para rastrear a profundidade dos nós na construção 
+	da prova de Merkle"""
 	def __init__(self, direction, tx):
 		self._direction = direction
 		self._tx = tx
 
 	def __eq__(self, other):
-		"""Overrides the default implementation"""
+		"""Substitui a implementação default"""
 		if isinstance(self, other.__class__):
 			return self.__dict__ == other.__dict__
 		return False
 
 	def __cmp__(self, other):
-		"""Overrides the default implementation"""
+		"""Substitui a implementação default"""
 		if isinstance(self, other.__class__):
 			return self.__dict__ == other.__dict__
 		return False
