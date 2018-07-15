@@ -2,9 +2,8 @@ from hash_data_structures import *
 
 
 class MerkleTree(object):
-    """Merkle Tree implementation, default hash function is 'sha256'.
-    Nodes are reconstructed upon every tx addition but the list of tx
-    persistent
+    """Implementação Merkle Tree , função hash default é 'sha256'.
+    Nós são contruídos a cada adição de txt com a lista de txt persistentes
     """
     def __init__(self, tx_list, hash_function='sha256'):
         hash_function = hash_function.lower()
@@ -57,8 +56,8 @@ class MerkleTree(object):
         return HashNode(nodes[0], nodes[1], self._hash_function)
 
     def _reevaluate(self):
-        """Resets the tree and makes a call to `_evaluate(...)` to reconstruct
-        the tree given its persistent list of tx's
+        """Reseta a árvore fazendo a chamada a `_evaluate(...)` to reconstruct
+        a árvore dada a lista de tx's persistente
         """
         self.reset_tree(self._hash_function)
         self._root = self._evaluate()
@@ -72,25 +71,25 @@ class MerkleTree(object):
 
     # @hash_function.setter
     def hash_function(self, value):
-        """Allows the user to change the tree's hash function. Requires that
-        the tree be rebuilt to accomodate this change
+        """Permite ao usuário mudar a funcão hash da árvore. 
+        Requer que a árvore seja reconstruída para acomodar essa mudança
         """
         value = value.lower()
         assert value in SECURE_HASH_FUNCTIONS, (
-            "{} is not a valid hash function".format(value))
+            "{} não é uma função hash válida".format(value))
         self._hash_function = value
 
     @property
     def block_header(self):
-        """str: Allow the user to query the tree's block header"""
+        """str: Permite ao usuário pesquisar o header da árvore bloqueado com hash"""
         return self._block_header
 
     @property
     def height(self):
-        """int: Allow the user to query the tree's height"""
+        """int: Permite ao usuário pesquisar a altura da árvore"""
         return self._height
 
     @property
     def leaves(self):
-        """list: Allow the user to query the tree's list of tx's"""
+        """list: Permite ao usuário pesquisar a lista de  tx's  da árvore"""
         return self._leaves
