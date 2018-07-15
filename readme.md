@@ -48,9 +48,9 @@ Use `python3 test.py` roda todos os testes. Você pode adicionar os seus própri
 
 Foi feito um plot de complexidade assintótica para a execução de diversos testes da árvore de Merkle, dentre eles obtive o seguinte comportamento para 5 e 500 nós:
 
-
+5 nós:
 ![Complexidade Assintóticas](img/complexidade5nodes.png "Complexidade considerando 5 nós")
-
+500 nós:
 ![Complexidade Assintóticas](img/complexidade500nodes.png "Complexidade considerando 500 nós")
 
 
