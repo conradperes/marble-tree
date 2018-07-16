@@ -22,10 +22,10 @@ class Node:
 
 	@property
 	def direction(self):
-		"""int: Allow user to query node for its depth"""
+		"""int: Permite pesquisar nós em profundidade"""
 		return self._direction
 
 	@property
 	def tx(self):
-		"""string: Allow user to query node for its tx string"""
+		"""string: Permite pesquisar nós pelo texto da string"""
 		return self._tx
